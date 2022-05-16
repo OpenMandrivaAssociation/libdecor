@@ -1,19 +1,18 @@
 Name:           libdecor
 Version:        0.1.0
-Release:        2%{?dist}
+Release:        1
 Summary:        Wayland client side decoration library
  
 License:        MIT
 URL:            https://gitlab.gnome.org/jadahl/libdecor
-Source:         %{url}/uploads/81adf91d27620e20bcc5f6b9b312d768/libdecor-0.1.0.tar.xz
- 
-BuildRequires:  gcc
+Source:         https://gitlab.gnome.org/jadahl/libdecor/-/archive/%{version}/libdecor-%{version}.tar.bz2
+
 BuildRequires:  meson
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(xkbcommon)
  
@@ -32,7 +31,6 @@ developing applications that use %{name}.
  
 %prep
 %autosetup -p1
- 
  
 %build
 %meson -Ddemo=false
