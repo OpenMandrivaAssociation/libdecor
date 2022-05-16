@@ -1,8 +1,12 @@
+%define major 0
+%define libname %mklibname decor %{major}
+%define devname %mklibname %{name} -d
+
 Name:           libdecor
 Version:        0.1.0
 Release:        1
 Summary:        Wayland client side decoration library
- 
+Group:          System/Libraries 
 License:        MIT
 URL:            https://gitlab.gnome.org/jadahl/libdecor
 Source:         https://gitlab.gnome.org/jadahl/libdecor/-/archive/%{version}/libdecor-%{version}.tar.bz2
@@ -17,17 +21,24 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(xkbcommon)
  
 %description
-Libdecor provides a small helper library for providing client side decoration
-to Wayland clients.
+Libdecor provides a small helper library for providing client side decoration to Wayland clients.
+
+%package -n %{libname}
+Summary:	Library for Libdecor provides a small helper library for providing client side decoration to Wayland clients.
+Group:		System/Libraries
+
+%description -n	%{libname}
+This package contains the library needed to run programs dynamically
+linked with %{name}.
+
  
-%package        devel
+%package -n %{devname}
 Summary:        Development files for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
  
-%description    devel
+%description -n %{devname}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
- 
  
 %prep
 %autosetup -p1
@@ -39,15 +50,15 @@ developing applications that use %{name}.
 %install
 %meson_install
  
-%files
-%license LICENSE
-%doc README.md
-%{_libdir}/libdecor-0.so.0*
+%files -n %{libname}
+%{_libdir}/libdecor-%{major}.so.%{major}*
 %dir %{_libdir}/libdecor/
 %dir %{_libdir}/libdecor/plugins-1
 %{_libdir}/libdecor/plugins-1/libdecor-cairo.so
  
-%files devel
-%{_includedir}/libdecor-0/
-%{_libdir}/libdecor-0.so
-%{_libdir}/pkgconfig/libdecor-0.pc
+%files n %{devname}
+%license LICENSE
+%doc README.md
+%{_includedir}/libdecor-%{major}/
+%{_libdir}/libdecor-%{major}.so
+%{_libdir}/pkgconfig/libdecor-%{major}.pc
