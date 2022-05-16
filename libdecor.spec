@@ -1,6 +1,6 @@
 %define major 0
 %define libname %mklibname decor %{major}
-%define devname %mklibname %{name} -d
+%define devname %mklibname decor -d
 
 Name:           libdecor
 Version:        0.1.0
