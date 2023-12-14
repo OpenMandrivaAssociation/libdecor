@@ -56,6 +56,7 @@ developing applications that use %{name}.
 %dir %{_libdir}/libdecor/
 %dir %{_libdir}/libdecor/plugins-1
 %{_libdir}/libdecor/plugins-1/libdecor-cairo.so
+%{_libdir}/libdecor/plugins-1/libdecor-gtk.so
  
 %files -n %{devname}
 %license LICENSE
