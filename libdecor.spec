@@ -14,6 +14,7 @@ Source:         https://gitlab.gnome.org/jadahl/libdecor/-/archive/%{version}/li
 BuildRequires:  meson
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
