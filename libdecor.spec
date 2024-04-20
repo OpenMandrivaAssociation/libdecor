@@ -3,13 +3,13 @@
 %define devname %mklibname decor -d
 
 Name:           libdecor
-Version:        0.2.1
+Version:        0.2.2
 Release:        1
 Summary:        Wayland client side decoration library
 Group:          System/Libraries 
 License:        MIT
 URL:            https://gitlab.gnome.org/jadahl/libdecor
-Source:         https://gitlab.gnome.org/jadahl/libdecor/-/archive/%{version}/libdecor-%{version}.tar.bz2
+Source0:         https://gitlab.freedesktop.org/libdecor/libdecor/-/archive/%{version}/libdecor-%{version}.tar.bz2
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(cairo)
