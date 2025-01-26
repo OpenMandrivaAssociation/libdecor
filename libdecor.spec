@@ -1,15 +1,15 @@
 %define major 0
-%define libname %mklibname decor %{major}
+%define libname %mklibname decor
 %define devname %mklibname decor -d
 
 Name:           libdecor
 Version:        0.2.2
-Release:        1
+Release:        2
 Summary:        Wayland client side decoration library
 Group:          System/Libraries 
 License:        MIT
-URL:            https://gitlab.gnome.org/jadahl/libdecor
-Source0:         https://gitlab.freedesktop.org/libdecor/libdecor/-/archive/%{version}/libdecor-%{version}.tar.bz2
+URL:            https://gitlab.freedesktop.org/libdecor/libdecor
+Source0:        https://gitlab.freedesktop.org/libdecor/libdecor/-/archive/%{version}/libdecor-%{version}.tar.bz2
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(cairo)
@@ -27,6 +27,8 @@ Libdecor provides a small helper library for providing client side decoration to
 %package -n %{libname}
 Summary:	Library for Libdecor provides a small helper library for providing client side decoration to Wayland clients.
 Group:		System/Libraries
+%rename %{mklibname decor 0}
+Recommends: (%{name}-gtk = %{EVRD} if %{mklibname gtk3 0})
 
 %description -n	%{libname}
 This package contains the library needed to run programs dynamically
@@ -40,6 +42,13 @@ Requires:       %{libname}%{?_isa} = %{version}-%{release}
 %description -n %{devname}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
+
+%package gtk
+Summary:	GTK plugin for libdecor
+Requires:	%{libname}%{?_isa} = %{EVRD}
+
+%description gtk
+GTK plugin for libdecor
  
 %prep
 %autosetup -p1
@@ -56,7 +65,6 @@ developing applications that use %{name}.
 %dir %{_libdir}/libdecor/
 %dir %{_libdir}/libdecor/plugins-1
 %{_libdir}/libdecor/plugins-1/libdecor-cairo.so
-%{_libdir}/libdecor/plugins-1/libdecor-gtk.so
  
 %files -n %{devname}
 %license LICENSE
@@ -64,3 +72,6 @@ developing applications that use %{name}.
 %{_includedir}/libdecor-%{major}/
 %{_libdir}/libdecor-%{major}.so
 %{_libdir}/pkgconfig/libdecor-%{major}.pc
+
+%files gtk
+%{_libdir}/libdecor/plugins-1/libdecor-gtk.so
