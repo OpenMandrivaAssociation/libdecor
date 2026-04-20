@@ -3,7 +3,7 @@
 %define devname %mklibname decor -d
 
 Name:           libdecor
-Version:        0.2.4
+Version:        0.2.5
 Release:        1
 Summary:        Wayland client side decoration library
 Group:          System/Libraries 
